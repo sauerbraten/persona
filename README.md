@@ -1,0 +1,1 @@
+Documentation @ http://godoc.org/github.com/sauerbraten/persona
