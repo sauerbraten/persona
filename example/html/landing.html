@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<title>Persona Demo Site</title>
+	
+	<link href="/main.css" rel="stylesheet">
+
+	<script src="http://use.edgefonts.net/pt-sans.js"></script>
+	<script src="https://login.persona.org/include.js"></script>
+	<script src="/persona.js"></script>
+
+	<script>
+		var email = "{{.}}";
+		if (email === "") {
+			email = null;
+		}
+
+		navigator.id.watch({
+			loggedInUser: email,
+			onlogin: signIn,
+			onlogout: signOut
+		});
+	</script>
+
+	<script>
+		function setStatusText() {
+			if (email != null) {
+				$("status").innerHTML = "logged in as " + email;
+			} else {
+				$("status").innerHTML = "not logged in";
+			}
+		}
+	</script>
+</head>
+
+<body spellcheck="false" onload="setStatusText();">
+	<h1>
+		Persona Demo Site
+	</h1>
+
+	<p>
+		You are currently <span id="status"></span>.
+	</p>
+
+	<p>
+		{{if .}}
+			<a class="persona-signinout" href="javascript:navigator.id.logout()">Sign out</a>
+		{{else}}
+			<a class="persona-signinout" href="javascript:navigator.id.request()">Sign in with your email address</a>
+		{{end}}
+	</p>
+</body>
+</html>
