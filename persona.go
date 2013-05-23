@@ -11,10 +11,10 @@ import (
 // Verifies an assertion for a given audience. Returns the response and any errors that occured while requesting, receiving and unmarshaling the response. Verification errors have to be handled using Reponse.OK() / Reponse.Status and Response.Reason.
 func VerifyAssertion(audience, assertion string) (resp Response, err error) {
 	rawResp, err := http.PostForm("https://verifier.login.persona.org/verify", url.Values{"audience": {audience}, "assertion": {assertion}})
-	defer rawResp.Body.Close()
 	if err != nil {
 		return
 	}
+	defer rawResp.Body.Close()
 
 	body, err := ioutil.ReadAll(rawResp.Body)
 	if err != nil {
