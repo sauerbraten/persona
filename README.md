@@ -21,6 +21,10 @@ Using persona works like this:
 3. persona.VerifyAssertion() returns a persona.Response
 4. based on this response and on persona.Response.OK(), you either set a session cookie for access to your site or return an error, which should make your site's javascript call navigator.id.logout()
 
+## Example
+
+There is an example implementation in [`example/`](https://github.com/sauerbraten/persona/blob/master/example).
+
 ## Documentation
 
 Full documentation is at http://godoc.org/github.com/sauerbraten/persona.
