@@ -16,7 +16,7 @@ Import the package:
 
 Using persona works like this:
 
-1. you write yout own sign in handler
+1. you write your own sign in handler
 2. your sign in handler calls `persona.VerifyAssertion()` and passes your site's audience and the assertion you received with the sign in request from your site's javascript
 3. `persona.VerifyAssertion()` returns a persona.Response
 4. based on this response and on `persona.Response.OK()`, you either set a session cookie for access to your site or return an error, which should make your site's javascript call `navigator.id.logout()`
