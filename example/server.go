@@ -9,7 +9,7 @@ import (
 
 func landingPage(resp http.ResponseWriter, req *http.Request) {
 	log.Println("/ req. by " + req.RemoteAddr)
-	template.Must(template.ParseFiles("html/landing.html")).Execute(resp, getUserEmail(req))
+	template.Must(template.ParseFiles("html/landing.html")).Execute(resp, getEmail(req))
 }
 
 func main() {

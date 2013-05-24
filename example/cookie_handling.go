@@ -11,7 +11,7 @@ var secCookie *securecookie.SecureCookie = securecookie.New([]byte("my very secr
 
 // looks for a session cookie and returns the user's email address, or "" if something failed.
 // this example has no error handling!
-func getUserEmail(req *http.Request) (email string) {
+func getEmail(req *http.Request) (email string) {
 	cookie, err := req.Cookie("session")
 	if err != nil {
 		return

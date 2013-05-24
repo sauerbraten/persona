@@ -25,6 +25,7 @@ func signIn(resp http.ResponseWriter, req *http.Request) {
 	if response.OK() {
 		setSessionCookie(resp, response.Email, response.Expires)
 		resp.WriteHeader(http.StatusOK)
+		log.Println("sign in: ", response.Email)
 	} else {
 		resp.WriteHeader(http.StatusUnauthorized)
 	}
@@ -34,6 +35,7 @@ func signIn(resp http.ResponseWriter, req *http.Request) {
 
 // revokes the cookie → client is signed out
 func signOut(resp http.ResponseWriter, req *http.Request) {
+	log.Println("sign out:", getEmail(req))
 	revokeSessionCookie(resp)
 	resp.WriteHeader(http.StatusOK)
 }
@@ -46,6 +48,7 @@ func userExists(email string) bool {
 
 // here you should add the user to some sort of database so you can save preferences/personalisations/additional data you might want to know about a user.
 func addUser(email string) error {
+	log.Println("added", email, "to list of known users")
 	knownUsers[email] = true
 	return nil
 }
