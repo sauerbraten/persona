@@ -1,9 +1,13 @@
 package main
 
 import (
+	"github.com/gorilla/securecookie"
 	"net/http"
 	"time"
 )
+
+// initialize secure cookie storage; 16 byte ~ 128 bit AES encryption
+var secCookie *securecookie.SecureCookie = securecookie.New([]byte("my very secret hash key"), []byte{0x5d, 0xa5, 0xd3, 0x90, 0xc9, 0x54, 0xa1, 0xc3, 0x70, 0x00, 0x8d, 0x6d, 0xa9, 0xd1, 0x07, 0x53})
 
 // looks for a session cookie and returns the user's email address, or "" if something failed.
 // this example has no error handling!

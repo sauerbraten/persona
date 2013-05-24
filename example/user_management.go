@@ -7,6 +7,9 @@ import (
 	"net/http"
 )
 
+// knownUsers should be a database table or something when using persona in production
+var knownUsers map[string]bool = make(map[string]bool)
+
 // signs the client in by checking with the persona verification API and setting a secure session cookie.
 // passes the persona verifiation API response down to the client so the javascript can act on it.
 func signIn(resp http.ResponseWriter, req *http.Request) {
