@@ -40,7 +40,7 @@ func signOut(resp http.ResponseWriter, req *http.Request) {
 	resp.WriteHeader(http.StatusOK)
 }
 
-// here you could (and probably should) check wether you already the user.
+// here you could (and probably should) check wether you already know the user.
 // for this example, we use a map; in production you'd have a table (see addUser()).
 func userExists(email string) bool {
 	return knownUsers[email]

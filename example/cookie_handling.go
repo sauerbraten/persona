@@ -28,15 +28,13 @@ func setSessionCookie(resp http.ResponseWriter, email string, expires int64) err
 		return err
 	}
 
-	cookie := &http.Cookie{
+	http.SetCookie(resp, &http.Cookie{
 		Name:     "session",
 		Value:    encoded,
 		Path:     "/",
 		HttpOnly: true,
-		Expires:  time.Now().Add(time.Hour * 336),
-	}
-
-	http.SetCookie(resp, cookie)
+		Expires:  time.Now().Add(time.Hour * 336), // session is valid for 2 weeks
+	})
 
 	// add new (first-time) users to list of known users
 	if !userExists(email) {
@@ -48,13 +46,11 @@ func setSessionCookie(resp http.ResponseWriter, email string, expires int64) err
 
 // overwrites the secure session cookie
 func revokeSessionCookie(resp http.ResponseWriter) {
-	cookie := &http.Cookie{
-		Name:     "session",
+	http.SetCookie(resp, &http.Cookie{
+		Name:     "session", // same cookie name → overwrites session cookie
 		Value:    "",
 		Path:     "/",
 		HttpOnly: true,
-		MaxAge:   -1,
-	}
-
-	http.SetCookie(resp, cookie)
+		MaxAge:   -1, // browser deletes this cookie immediatly
+	})
 }
