@@ -1,9 +1,9 @@
 # Files and Folders
 
 - *css/*, *html/*, *js/* are self explanatory
-- *cookie_handling.go* contains methods to set and revoke session cookies, using [gorilla/securecookie](http://www.gorillatoolkit.org/pkg/securecookie). It also reads email addresses out of those cookies.
-- *user_management.go* contains the sign-in and sign-out handlers (`signIn()` and `signOut()` respectively), plus dummy methods to simulate user management (adding users, checking if a user already existst).
-- *server.go* contains `init()` and `main()`, as well as a simple landing page handler. `init()` sets up the user "database" and the secure cookie instance. `main()` sets up the HTTP routes and fires up the server.
+- *cookie_handling.go* initializes a securecookie instance and contains methods to set and revoke session cookies, using [gorilla/securecookie](http://www.gorillatoolkit.org/pkg/securecookie). It also reads email addresses out of those cookies.
+- *user_management.go* sets up the user "database" and contains the sign-in and sign-out handlers (`signIn()` and `signOut()` respectively), plus dummy methods to simulate user management (adding users, checking if a user already existst).
+- *server.go* contains `main()` and a simple landing page handler. `main()` sets up the HTTP routes and fires up the server.
 
 # How it works:
 
