@@ -11,6 +11,7 @@ import (
 var knownUsers map[string]bool = make(map[string]bool)
 
 // signs the client in by checking with the persona verification API and setting a secure session cookie.
+// adds new users to the list of known users.
 // passes the persona verifiation API response down to the client so the javascript can act on it.
 func signIn(resp http.ResponseWriter, req *http.Request) {
 	enc := json.NewEncoder(resp)
@@ -24,6 +25,11 @@ func signIn(resp http.ResponseWriter, req *http.Request) {
 
 	if response.OK() {
 		setSessionCookie(resp, response.Email, response.Expires)
+
+		if !userExists(response.Email) {
+			addUser(response.Email)
+		}
+
 		resp.WriteHeader(http.StatusOK)
 		log.Println("sign in :", response.Email)
 	} else {

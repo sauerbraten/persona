@@ -36,11 +36,6 @@ func setSessionCookie(resp http.ResponseWriter, email string, expires int64) err
 		Expires:  time.Now().Add(time.Hour * 336), // session is valid for 2 weeks
 	})
 
-	// add new (first-time) users to list of known users
-	if !userExists(email) {
-		addUser(email)
-	}
-
 	return nil
 }
 
