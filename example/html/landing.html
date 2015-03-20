@@ -6,10 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<title>Persona Demo Site</title>
-	
+
 	<link href="/main.css" rel="stylesheet">
 
-	<script src="http://use.edgefonts.net/pt-sans.js"></script>
 	<script src="https://login.persona.org/include.js"></script>
 	<script src="/persona.js"></script>
 
@@ -29,9 +28,9 @@
 	<script>
 		function setStatusText() {
 			if (email != null) {
-				$("status").innerHTML = "logged in as " + email;
+				$("status").innerHTML = "Hi there " + email + "!";
 			} else {
-				$("status").innerHTML = "not logged in";
+				$("status").innerHTML = "You are currently not logged in.";
 			}
 		}
 	</script>
@@ -42,15 +41,14 @@
 		Persona Demo Site
 	</h1>
 
-	<p>
-		You are currently <span id="status"></span>.
+	<p id="status">
 	</p>
 
 	<p>
 		{{if .}}
 			<a class="persona-signinout" href="javascript:navigator.id.logout()">Sign out</a>
 		{{else}}
-			<a class="persona-signinout" href="javascript:navigator.id.request()">Sign in with your email address</a>
+			<a class="persona-signinout" href="javascript:navigator.id.request()">Sign in</a>
 		{{end}}
 	</p>
 </body>

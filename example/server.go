@@ -15,10 +15,10 @@ func main() {
 	r := mux.NewRouter()
 
 	// css
-	r.Handle("/{file:[a-z]+\\.css}", http.FileServer(http.Dir("css")))
+	r.Handle("/{_:[a-z]+\\.css}", http.FileServer(http.Dir("css")))
 
 	// javascript
-	r.Handle("/{file:[a-z]+\\.js}", http.FileServer(http.Dir("js")))
+	r.Handle("/{_:[a-z]+\\.js}", http.FileServer(http.Dir("js")))
 
 	// frontpage
 	r.HandleFunc("/", landingPage)

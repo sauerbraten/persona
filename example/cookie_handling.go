@@ -46,6 +46,6 @@ func revokeSessionCookie(resp http.ResponseWriter) {
 		Value:    "",
 		Path:     "/",
 		HttpOnly: true,
-		MaxAge:   -1, // browser deletes this cookie immediatly
+		MaxAge:   -1, // browser deletes this cookie immediately
 	})
 }

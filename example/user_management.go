@@ -53,6 +53,7 @@ func userExists(email string) bool {
 }
 
 // here you should add the user to some sort of database so you can save preferences/personalisations/additional data you might want to know about a user.
+// example: include a column "profileCompleted" to the users table, and while that column is false for the user, you server him a form to fill in his personal data you need.
 func addUser(email string) error {
 	log.Println("new user:", email)
 	knownUsers[email] = true
